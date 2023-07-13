@@ -23,10 +23,11 @@ mongoose.connect('mongodb+srv://Ecommerce:Ecommerce@cluster0.0fug6mf.mongodb.net
 
 app.get("/users", async (req, res) => {
     try {
-        const alldata = await Userdata.find()
-        return res.json(alldata)
+        const data = await Userdata.find()
+        return res.json(data)
     }
     catch (err) {
+
         res.json(err.message)
     }
 
@@ -141,5 +142,8 @@ app.delete('/deleteusers/:id', async (req, res) => {
         console.error('Failed to delete user:', error);
         res.status(500).json({ message: 'Internal server error' });
       }
-    });
+});
+    
+
+app.listen(9000)
    
